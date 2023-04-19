@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
-    "bootstrap": "^5.0.2",
+    "bootstrap": "^5.1.0",
     "vue": "^3.2.47"
   },
   "devDependencies": {
