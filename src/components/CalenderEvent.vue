@@ -1,11 +1,11 @@
 <template>
-  <div id="calendar-event">
-    <div class="alert text-center">
+  <div>
+    <div class="alert text-center" :class="alertColor">
       <div>
-        <strong>High</strong>
+        <strong>{{ priorityDisplayName }}</strong>
       </div>
 
-      <div>Vue.js 3 learning</div>
+      <div>{{ event.title }}</div>
 
       <div>
         <i class="fas fa-edit me-2" role="button"></i>
@@ -18,6 +18,25 @@
 <script>
 export default {
   name: "CalenderEvent",
+  props: {
+    event: Object,
+  },
+  computed: {
+    priorityDisplayName() {
+      switch (this.event.priority) {
+        case 1:
+          return "Low";
+        case 0:
+          return "Medium";
+        case -1:
+          return "High";
+      }
+      return "Unkown priority";
+    },
+    alertColor() {
+      return "alert-" + this.event.color;
+    },
+  },
 };
 </script>
 
