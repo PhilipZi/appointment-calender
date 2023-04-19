@@ -125,6 +125,7 @@ export default {
 </script>
 
 <style>
+@import "@fortawesome/fontawesome-free/css/all.css";
 .square {
   width: 40px;
   height: 40px;
