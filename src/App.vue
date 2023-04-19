@@ -7,7 +7,7 @@
           <div class="card-group">
             <div class="card" v-for="i in 7" :key="i">
               <div class="card-header text-center" role="button">
-                <strong>Montag</strong>
+                <strong>Monday</strong>
               </div>
               <div class="card-body">
                 <!-- Anfang: Template für die Calendar-Day-Component -->
@@ -16,10 +16,10 @@
                   <div id="calendar-event">
                     <div class="alert text-center">
                       <div>
-                        <strong>Hoch</strong>
+                        <strong>High</strong>
                       </div>
 
-                      <div>Vue.js 3 lernen</div>
+                      <div>Vue.js 3 learning</div>
 
                       <div>
                         <i class="fas fa-edit me-2" role="button"></i>
@@ -43,7 +43,7 @@
         <div id="calender-entry">
           <div class="card">
             <div class="card-header text-center">
-              <h5>Neuer Termin für: <strong>Montag</strong></h5>
+              <h5>New Appointment For: <strong>Monday</strong></h5>
             </div>
             <div class="card-body">
               <input
@@ -52,9 +52,9 @@
                 placeholder="Neuer Eintrag"
               />
               <select class="form-select mt-2">
-                <option value="-1">Hoch</option>
-                <option value="0">Mittel</option>
-                <option value="1">Tief</option>
+                <option value="-1">High</option>
+                <option value="0">Medium</option>
+                <option value="1">Low</option>
               </select>
               <div class="text-center mt-3">
                 <span
@@ -67,8 +67,8 @@
               </div>
               <hr />
               <div class="d-grid gap-2">
-                <button class="btn btn-primary">Eintragen</button>
-                <button class="btn btn-danger">Inhalt löschen</button>
+                <button class="btn btn-primary">Submit</button>
+                <button class="btn btn-danger">Delete Content</button>
               </div>
             </div>
           </div>
@@ -86,7 +86,7 @@
         <div id="calendar-settings">
           <div class="card">
             <div class="card-header text-center bg-success text-white">
-              <strong>Einstellungen</strong>
+              <strong>Settings</strong>
             </div>
             <div class="card-body">
               <ul class="nav nav-pills nav-fill">
