@@ -1,12 +1,12 @@
-import { calenderWeekData } from "./seed";
+import { calendarWeekData } from "./seed";
 import { reactive, readonly } from "vue";
 
 const state = reactive({
-  calenderWeekData,
+  calendarWeekData,
 });
 
 const getters = {
-  activeDay: () => state.calenderWeekData.find((day) => day.active),
+  activeDay: () => state.calendarWeekData.find((day) => day.active),
 };
 
 const mutations = {};

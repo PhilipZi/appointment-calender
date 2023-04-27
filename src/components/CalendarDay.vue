@@ -9,14 +9,20 @@
     </div>
     <div class="card-body">
       <div id="calendar-day">
-        <CalenderEvent
+        <CalendarEvent
           v-for="event in day.events"
           :key="event.title"
           :event="event"
         >
-          <template v-slot:eventPriority> Priorität </template>
-          <template v-slot>Titel des Events</template>
-        </CalenderEvent>
+          <!-- <template v-slot:eventPriority="slotProps"> -->
+          <template #eventPriority="slotProps">
+            <h5>{{ slotProps.priorityDisplayName }}</h5></template
+          >
+          <!-- <template v-slot:default></template> -->
+          <template v-slot="{ event: entry }"
+            ><i>{{ entry.title }}</i></template
+          >
+        </CalendarEvent>
         <!-- Ende: Template für die Calendar-Event-Component -->
       </div>
     </div>
@@ -24,13 +30,13 @@
 </template>
 
 <script>
-import CalenderEvent from "./CalenderEvent.vue";
+import CalendarEvent from "./CalendarEvent.vue";
 import Store from "../store";
 
 export default {
-  name: "CalenderDay",
+  name: "CalendarDay",
   components: {
-    CalenderEvent,
+    CalendarEvent,
   },
   props: {
     day: {

@@ -1,5 +1,5 @@
 <template>
-  <div id="calender-entry">
+  <div id="calendar-entry">
     <div class="card">
       <div class="card-header text-center">
         <h5>New Appointment For: <strong>Monday</strong></h5>
@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  name: "CalenderEntry",
+  name: "CalendarEntry",
 };
 </script>
 
