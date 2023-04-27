@@ -1,4 +1,4 @@
-export const calenderWeekData = [
+export const calendarWeekData = [
   {
     id: 1,
     shortName: "Mo",

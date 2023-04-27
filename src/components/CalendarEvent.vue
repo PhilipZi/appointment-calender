@@ -13,17 +13,20 @@
 
       <div>
         <i class="fas fa-edit me-2" role="button"></i>
-        <i class="far fa-trash-alt" role="button"></i>
+        <i class="far fa-trash-alt" role="button" @click="deleteEvent()"></i>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Store from "../store";
+
 export default {
-  name: "CalenderEvent",
+  name: "CalendarEvent",
   props: {
-    event: Object,
+    event: {},
+    day: {},
   },
   computed: {
     priorityDisplayName() {
@@ -39,6 +42,11 @@ export default {
     },
     alertColor() {
       return "alert-" + this.event.color;
+    },
+  },
+  methods: {
+    deleteEvent() {
+      Store.mutations.deleteEvent(this.day.id, this.event.title);
     },
   },
 };

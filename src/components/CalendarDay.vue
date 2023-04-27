@@ -9,7 +9,7 @@
     </div>
     <div class="card-body">
       <div id="calendar-day">
-        <CalenderEvent
+        <CalendarEvent
           v-for="event in day.events"
           :key="event.title"
           :event="event"
@@ -22,7 +22,7 @@
           <template v-slot="{ event: entry }"
             ><i>{{ entry.title }}</i></template
           >
-        </CalenderEvent>
+        </CalendarEvent>
         <!-- Ende: Template für die Calendar-Event-Component -->
       </div>
     </div>
@@ -30,13 +30,13 @@
 </template>
 
 <script>
-import CalenderEvent from "./CalenderEvent.vue";
+import CalendarEvent from "./CalendarEvent.vue";
 import Store from "../store";
 
 export default {
-  name: "CalenderDay",
+  name: "CalendarDay",
   components: {
-    CalenderEvent,
+    CalendarEvent,
   },
   props: {
     day: {

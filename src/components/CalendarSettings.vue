@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  name: "CalenderSettings",
+  name: "CalendarSettings",
 };
 </script>
 
