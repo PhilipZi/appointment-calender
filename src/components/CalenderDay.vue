@@ -14,8 +14,8 @@
           :key="event.title"
           :event="event"
         >
-          <template v-slot:eventPriority> Priorität </template>
-          <template v-slot>Titel des Events</template>
+          <!-- <template v-slot:eventPriority> Priorität </template>
+          <template v-slot>Titel des Events</template> -->
         </CalenderEvent>
         <!-- Ende: Template für die Calendar-Event-Component -->
       </div>
