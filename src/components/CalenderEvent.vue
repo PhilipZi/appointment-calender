@@ -2,10 +2,12 @@
   <div>
     <div class="alert text-center" :class="alertColor">
       <div>
-        <strong>{{ priorityDisplayName }}</strong>
+        <!-- <strong>{{ priorityDisplayName }}</strong> -->
+        <slot name="eventPriority"></slot>
       </div>
 
-      <div>{{ event.title }}</div>
+      <!-- <div>{{ event.title }}</div> -->
+      <slot></slot>
 
       <div>
         <i class="fas fa-edit me-2" role="button"></i>
