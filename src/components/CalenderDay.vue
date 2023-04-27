@@ -14,8 +14,14 @@
           :key="event.title"
           :event="event"
         >
-          <!-- <template v-slot:eventPriority> Priorität </template>
-          <template v-slot>Titel des Events</template> -->
+          <!-- <template v-slot:eventPriority="slotProps"> -->
+          <template #eventPriority="slotProps">
+            <h5>{{ slotProps.priorityDisplayName }}</h5></template
+          >
+          <!-- <template v-slot:default></template> -->
+          <template v-slot="{ event: entry }"
+            ><i>{{ entry.title }}</i></template
+          >
         </CalenderEvent>
         <!-- Ende: Template für die Calendar-Event-Component -->
       </div>
