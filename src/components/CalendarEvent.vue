@@ -1,20 +1,23 @@
 <template>
   <div>
     <div class="alert text-center" :class="alertColor">
-      <div>
-        <slot name="eventPriority" :priorityDisplayName="priorityDisplayName">
-          <strong>{{ priorityDisplayName }}</strong>
+      <template v-if="!event.edit">
+        <div>
+          <slot name="eventPriority" :priorityDisplayName="priorityDisplayName">
+            <strong>{{ priorityDisplayName }}</strong>
+          </slot>
+        </div>
+
+        <slot :event="event">
+          <div>{{ event.title }}</div>
         </slot>
-      </div>
 
-      <slot :event="event">
-        <div>{{ event.title }}</div>
-      </slot>
-
-      <div>
-        <i class="fas fa-edit me-2" role="button"></i>
-        <i class="far fa-trash-alt" role="button" @click="deleteEvent()"></i>
-      </div>
+        <div>
+          <i class="fas fa-edit me-2" role="button"></i>
+          <i class="far fa-trash-alt" role="button" @click="deleteEvent()"></i>
+        </div>
+      </template>
+      <template v-else><p>test</p></template>
     </div>
   </div>
 </template>
