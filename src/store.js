@@ -10,6 +10,14 @@ const getters = {
 };
 
 const mutations = {
+  editEvent(dayId, eventTitle) {
+    state.calendarWeekData.map((dayObj) => {
+      dayObj.events.map((event) => (event.edit = false));
+    });
+    const dayObj = state.calendarWeekData.find((day) => day.id === dayId);
+    const eventObj = dayObj.events.find((event) => event.title === eventTitle);
+    eventObj.edit = true;
+  },
   deleteEvent(dayId, eventTitle) {
     const dayObj = state.calendarWeekData.find((day) => day.id === dayId);
     const eventIndex = dayObj.events.findIndex(
