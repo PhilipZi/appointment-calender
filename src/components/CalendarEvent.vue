@@ -17,7 +17,11 @@
           <i class="far fa-trash-alt" role="button" @click="deleteEvent()"></i>
         </div>
       </template>
-      <template v-else><p>test</p></template>
+      <template v-else>
+        <input type="text" class="form-control" :placeholder="event.title" />
+        <hr />
+        <i class="fas fa-check"></i>
+      </template>
     </div>
   </div>
 </template>
