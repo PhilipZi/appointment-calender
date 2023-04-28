@@ -26,7 +26,7 @@
         />
         <div>{{ newEventTitle }}</div>
         <hr />
-        <i class="fas fa-check"></i>
+        <i class="fas fa-check" role="button" @click="updateEvent()"></i>
       </template>
     </div>
   </div>
@@ -68,6 +68,13 @@ export default {
     },
     editEvent() {
       Store.mutations.editEvent(this.day.id, this.event.title);
+    },
+    updateEvent() {
+      Store.mutations.updateEvent(
+        this.day.id,
+        this.event.title,
+        this.newEventTitle
+      );
     },
     setNewEventTitle(event) {
       this.newEventTitle = event.target.value;

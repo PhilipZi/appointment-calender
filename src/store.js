@@ -18,6 +18,15 @@ const mutations = {
     const eventObj = dayObj.events.find((event) => event.title === eventTitle);
     eventObj.edit = true;
   },
+  updateEvent(dayId, oldEventTitle, newEventTitle) {
+    newEventTitle = newEventTitle !== "" ? newEventTitle : oldEventTitle;
+    const dayObj = state.calendarWeekData.find((day) => day.id === dayId);
+    const eventObj = dayObj.events.find(
+      (event) => event.title === oldEventTitle
+    );
+    eventObj.title = newEventTitle;
+    eventObj.edit = false;
+  },
   deleteEvent(dayId, eventTitle) {
     const dayObj = state.calendarWeekData.find((day) => day.id === dayId);
     const eventIndex = dayObj.events.findIndex(
