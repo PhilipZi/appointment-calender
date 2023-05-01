@@ -24,7 +24,11 @@
           :placeholder="event.title"
           @input="setNewEventTitle"
         />
-        <div>{{ newEventTitle }}</div>
+        <select class="form-select mt-2">
+          <option value="-1">Low</option>
+          <option value="0">Medium</option>
+          <option value="1">High</option>
+        </select>
         <hr />
         <i class="fas fa-check" role="button" @click="updateEvent()"></i>
       </template>
