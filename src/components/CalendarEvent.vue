@@ -21,10 +21,15 @@
         <input
           type="text"
           class="form-control"
+          ref="newEventTitleInput"
           :placeholder="event.title"
-          @input="setNewEventTitle"
+          @input="setNewEventTitle($event)"
         />
-        <div>{{ newEventTitle }}</div>
+        <select class="form-select mt-2" v-model="newEventPriority">
+          <option value="-1">High</option>
+          <option value="0">Medium</option>
+          <option value="1">Low</option>
+        </select>
         <hr />
         <i class="fas fa-check" role="button" @click="updateEvent()"></i>
       </template>
@@ -38,12 +43,13 @@ import Store from "../store";
 export default {
   name: "CalendarEvent",
   props: {
-    event: {},
-    day: {},
+    event: Object,
+    day: Object,
   },
   data() {
     return {
       newEventTitle: "",
+      newEventPriority: this.event.priority,
     };
   },
   computed: {
@@ -68,13 +74,15 @@ export default {
     },
     editEvent() {
       Store.mutations.editEvent(this.day.id, this.event.title);
+      this.$nextTick(() => {
+        this.$refs.newEventTitleInput.focus();
+      });
     },
     updateEvent() {
-      Store.mutations.updateEvent(
-        this.day.id,
-        this.event.title,
-        this.newEventTitle
-      );
+      Store.mutations.updateEvent(this.day.id, this.event.title, {
+        title: this.newEventTitle,
+        priority: this.newEventPriority,
+      });
     },
     setNewEventTitle(event) {
       this.newEventTitle = event.target.value;
@@ -83,4 +91,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
