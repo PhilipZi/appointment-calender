@@ -2,7 +2,9 @@
   <div id="calendar-entry">
     <div class="card">
       <div class="card-header text-center">
-        <h5>New Appointment For: <strong>Monday</strong></h5>
+        <h5>
+          New Appointment For: <strong>{{ activeDayName }}</strong>
+        </h5>
       </div>
       <div class="card-body">
         <input type="text" class="form-control" placeholder="Neuer Eintrag" />
@@ -31,8 +33,15 @@
 </template>
 
 <script>
+import Store from "../store";
+
 export default {
   name: "CalendarEntry",
+  computed: {
+    activeDayName() {
+      return Store.getters.activeDay().fullName;
+    },
+  },
 };
 </script>
 
