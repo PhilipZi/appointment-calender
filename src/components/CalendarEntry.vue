@@ -20,6 +20,7 @@
             class="d-inline-block alert m-0 me-2 square"
             :class="eventColorClasses(color)"
             role="button"
+            @click="setEventColor(color)"
           >
           </span>
         </div>
@@ -41,6 +42,11 @@ export default {
   data() {
     return {
       eventColors: ["primary", "success", "info", "warning", "danger"],
+      event: {
+        title: "",
+        color: "primary",
+        priority: 0,
+      },
     };
   },
   computed: {
@@ -50,7 +56,15 @@ export default {
   },
   methods: {
     eventColorClasses(eventColor) {
-      return ["alert-" + eventColor];
+      return [
+        "alert-" + eventColor,
+        this.event.color === eventColor
+          ? "border border-" + this.event.color
+          : "",
+      ];
+    },
+    setEventColor(eventColor) {
+      this.event.color = eventColor;
     },
   },
 };
