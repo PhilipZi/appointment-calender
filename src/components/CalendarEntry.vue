@@ -15,9 +15,10 @@
         </select>
         <div class="text-center mt-3">
           <span
-            v-for="i in 5"
-            :key="i"
-            class="d-inline-block alert alert-primary m-0 me-2 square"
+            v-for="color in eventColors"
+            :key="color"
+            class="d-inline-block alert m-0 me-2 square"
+            :class="eventColorClasses(color)"
             role="button"
           >
           </span>
@@ -37,9 +38,19 @@ import Store from "../store";
 
 export default {
   name: "CalendarEntry",
+  data() {
+    return {
+      eventColors: ["primary", "success", "info", "warning", "danger"],
+    };
+  },
   computed: {
     activeDayName() {
       return Store.getters.activeDay().fullName;
+    },
+  },
+  methods: {
+    eventColorClasses(eventColor) {
+      return ["alert-" + eventColor];
     },
   },
 };
