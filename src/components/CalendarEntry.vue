@@ -40,6 +40,8 @@
             :disabled="submitEventButtonStatus"
             @click="submitEvent()"
           >
+            <!-- This is the version of the button if disabled with no input -->
+            <!-- <button  :disabled="submitEventButtonStatus"></button> -->
             Submit
           </button>
           <button class="btn btn-danger">Delete Content</button>
@@ -69,9 +71,9 @@ export default {
     activeDayName() {
       return Store.getters.activeDay().fullName;
     },
-    submitEventButtonStatus() {
-      return this.event.title === "";
-    },
+    // submitEventButtonStatus() {
+    //   return this.event.title === "";
+    // },
   },
   methods: {
     eventColorClasses(eventColor) {
