@@ -7,7 +7,10 @@
         </h5>
       </div>
       <div class="card-body">
-        {{ event }}
+        <div class="alert alert-danger" v-if="error">
+          Der Titel darf nicht leer sein
+        </div>
+
         <input
           type="text"
           class="form-control"
@@ -32,7 +35,15 @@
         </div>
         <hr />
         <div class="d-grid gap-2">
-          <button class="btn btn-primary" @click="submitEvent()">Submit</button>
+          <button
+            class="btn btn-primary"
+            :disabled="submitEventButtonStatus"
+            @click="submitEvent()"
+          >
+            <!-- This is the version of the button if disabled with no input -->
+            <!-- <button  :disabled="submitEventButtonStatus"></button> -->
+            Submit
+          </button>
           <button class="btn btn-danger">Delete Content</button>
         </div>
       </div>
@@ -53,12 +64,16 @@ export default {
         color: "primary",
         priority: 0,
       },
+      error: false,
     };
   },
   computed: {
     activeDayName() {
       return Store.getters.activeDay().fullName;
     },
+    // submitEventButtonStatus() {
+    //   return this.event.title === "";
+    // },
   },
   methods: {
     eventColorClasses(eventColor) {
@@ -73,7 +88,14 @@ export default {
       this.event.color = eventColor;
     },
     submitEvent() {
+      if (this.event.title === "") return (this.error = true);
       Store.mutations.storeEvent(this.event);
+      this.event = {
+        title: "",
+        color: "primary",
+        priority: 0,
+      };
+      this.error = false;
     },
   },
 };
