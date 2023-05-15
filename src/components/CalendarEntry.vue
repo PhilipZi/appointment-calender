@@ -35,7 +35,13 @@
         </div>
         <hr />
         <div class="d-grid gap-2">
-          <button class="btn btn-primary" @click="submitEvent()">Submit</button>
+          <button
+            class="btn btn-primary"
+            :disabled="submitEventButtonStatus"
+            @click="submitEvent()"
+          >
+            Submit
+          </button>
           <button class="btn btn-danger">Delete Content</button>
         </div>
       </div>
@@ -62,6 +68,9 @@ export default {
   computed: {
     activeDayName() {
       return Store.getters.activeDay().fullName;
+    },
+    submitEventButtonStatus() {
+      return this.event.title === "";
     },
   },
   methods: {
