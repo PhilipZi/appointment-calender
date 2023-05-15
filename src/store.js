@@ -15,6 +15,15 @@ const mutations = {
       dayObj.id === dayId ? (dayObj.active = true) : (dayObj.active = false);
     });
   },
+  storeEvent(eventDO) {
+    const activeDay = getters.activeDay();
+    activeDay.events.push({
+      title: eventDO.title,
+      edit: false,
+      color: eventDO.color,
+      priority: Number(eventDO.priority),
+    });
+  },
   editEvent(dayId, eventTitle) {
     state.calendarWeekData.map((dayObj) => {
       dayObj.events.map((event) => (event.edit = false));
