@@ -32,7 +32,7 @@
         </div>
         <hr />
         <div class="d-grid gap-2">
-          <button class="btn btn-primary">Submit</button>
+          <button class="btn btn-primary" @click="submitEvent()">Submit</button>
           <button class="btn btn-danger">Delete Content</button>
         </div>
       </div>
@@ -71,6 +71,9 @@ export default {
     },
     setEventColor(eventColor) {
       this.event.color = eventColor;
+    },
+    submitEvent() {
+      Store.mutations.storeEvent(this.event);
     },
   },
 };
