@@ -7,8 +7,14 @@
         </h5>
       </div>
       <div class="card-body">
-        <input type="text" class="form-control" placeholder="Neuer Eintrag" />
-        <select class="form-select mt-2">
+        {{ event }}
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Neuer Eintrag"
+          v-model="event.title"
+        />
+        <select class="form-select mt-2" v-model="event.priority">
           <option value="-1">High</option>
           <option value="0">Medium</option>
           <option value="1">Low</option>
