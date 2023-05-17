@@ -21,7 +21,7 @@
           </button>
         </div>
 
-        <CalendarSettings v-show="displaySettings" />
+        <CalendarSettings v-if="displaySettings" />
       </div>
     </div>
   </div>
