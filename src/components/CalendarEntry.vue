@@ -15,7 +15,10 @@
           type="text"
           class="form-control"
           placeholder="Neuer Eintrag"
+          ref="eventTitleInput"
           v-model="event.title"
+          @keyup.enter.exact="submitEvent()"
+          @keyup.ctrl.enter.exact="resetEventTitle()"
         />
         <select class="form-select mt-2" v-model="event.priority">
           <option value="-1">High</option>
@@ -44,7 +47,9 @@
             <!-- <button  :disabled="submitEventButtonStatus"></button> -->
             Submit
           </button>
-          <button class="btn btn-danger">Delete Content</button>
+          <button class="btn btn-danger" @click="resetEventTitle()">
+            Delete Content
+          </button>
         </div>
       </div>
     </div>
@@ -75,6 +80,11 @@ export default {
     //   return this.event.title === "";
     // },
   },
+
+  mounted() {
+    this.$refs.eventTitleInput.focus();
+  },
+
   methods: {
     eventColorClasses(eventColor) {
       return [
@@ -96,6 +106,9 @@ export default {
         priority: 0,
       };
       this.error = false;
+    },
+    resetEventTitle() {
+      this.event.title = "";
     },
   },
 };
