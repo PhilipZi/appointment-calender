@@ -28,16 +28,21 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from "vue";
 import CalendarWeek from "./components/CalendarWeek.vue";
 import CalendarEntry from "./components/CalendarEntry.vue";
-import CalendarSettings from "./components/CalendarSettings.vue";
+// import CalendarSettings from "./components/CalendarSettings.vue";
 
 export default {
   name: "App",
   components: {
     CalendarWeek,
     CalendarEntry,
-    CalendarSettings,
+    CalendarSettings: defineAsyncComponent(() => {
+      import(
+        /*webpackChunkName: 'CalendarSettingsComponent' */ "./components/CalendarSettings.vue"
+      );
+    }),
   },
   data() {
     return {
