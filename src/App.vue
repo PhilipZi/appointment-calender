@@ -4,7 +4,9 @@
       <div class="col-12">
         <!-- <CalendarWeekAsList />
         <CalendarWeek /> -->
-        <component :is="activeView" />
+        <KeepAlive>
+          <component :is="activeView" />
+        </KeepAlive>
       </div>
     </div>
     <div class="row mt-3">
