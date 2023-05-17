@@ -16,6 +16,7 @@
           class="form-control"
           placeholder="Neuer Eintrag"
           v-model="event.title"
+          @keyup.enter="submitEvent()"
         />
         <select class="form-select mt-2" v-model="event.priority">
           <option value="-1">High</option>
