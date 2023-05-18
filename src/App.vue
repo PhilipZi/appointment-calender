@@ -93,4 +93,16 @@ export default {
 .fade-enter-active {
   transition: all 0.25s ease-out;
 }
+
+.fade-leave-from {
+  opacity: 1;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-leave-active {
+  transition: all 0.25s ease-out;
+}
 </style>
