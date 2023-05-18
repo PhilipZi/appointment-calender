@@ -25,7 +25,9 @@
           </button>
         </div>
 
-        <CalendarSettings v-if="displaySettings" />
+        <Transition name="fade">
+          <CalendarSettings v-if="displaySettings" />
+        </Transition>
       </div>
     </div>
   </div>
@@ -77,5 +79,18 @@ export default {
 .square {
   width: 40px;
   height: 40px;
+}
+
+/* Transition: Fade */
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-enter-active {
+  transition: all 0.25s ease-out;
 }
 </style>
