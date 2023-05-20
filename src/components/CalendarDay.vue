@@ -10,21 +10,28 @@
     </div>
     <div class="card-body">
       <div id="calendar-day">
-        <CalendarEvent
-          v-for="event in day.events"
-          :key="event.title"
-          :event="event"
-          :day="day"
-        >
-          <!-- <template v-slot:eventPriority="slotProps"> -->
-          <template #eventPriority="slotProps">
-            <h5>{{ slotProps.priorityDisplayName }}</h5></template
+        <div v-if="day.events.length">
+          <CalendarEvent
+            v-for="event in day.events"
+            :key="event.title"
+            :event="event"
+            :day="day"
           >
-          <!-- <template v-slot:default></template> -->
-          <template v-slot="{ event: entry }"
-            ><i>{{ entry.title }}</i></template
-          >
-        </CalendarEvent>
+            <!-- <template v-slot:eventPriority="slotProps"> -->
+            <template #eventPriority="slotProps">
+              <h5>{{ slotProps.priorityDisplayName }}</h5></template
+            >
+            <!-- <template v-slot:default></template> -->
+            <template v-slot="{ event: entry }"
+              ><i>{{ entry.title }}</i></template
+            >
+          </CalendarEvent>
+        </div>
+        <div v-else>
+          <div class="alert alert-light text-center">
+            <i>Keine Termine</i>
+          </div>
+        </div>
         <!-- Ende: Template für die Calendar-Event-Component -->
       </div>
     </div>

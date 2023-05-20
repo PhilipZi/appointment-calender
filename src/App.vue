@@ -5,7 +5,9 @@
         <!-- <CalendarWeekAsList />
         <CalendarWeek /> -->
         <KeepAlive>
-          <component :is="activeView" />
+          <Transition name="fade" mode="out-in" appear>
+            <component :is="activeView" />
+          </Transition>
         </KeepAlive>
       </div>
     </div>
