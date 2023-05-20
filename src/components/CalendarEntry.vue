@@ -38,11 +38,7 @@
         </div>
         <hr />
         <div class="d-grid gap-2">
-          <button
-            class="btn btn-primary"
-            :disabled="submitEventButtonStatus"
-            @click="submitEvent()"
-          >
+          <button class="btn btn-primary" @click="submitEvent()">
             <!-- This is the version of the button if disabled with no input -->
             <!-- <button  :disabled="submitEventButtonStatus"></button> -->
             Submit
