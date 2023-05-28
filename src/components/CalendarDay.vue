@@ -12,21 +12,23 @@
       <div id="calendar-day">
         <Transition name="fade" mode="out-in">
           <div v-if="day.events.length">
-            <CalendarEvent
-              v-for="event in day.events"
-              :key="event.title"
-              :event="event"
-              :day="day"
-            >
-              <!-- <template v-slot:eventPriority="slotProps"> -->
-              <template #eventPriority="slotProps">
-                <h5>{{ slotProps.priorityDisplayName }}</h5></template
+            <TransitionGroup name="list">
+              <CalendarEvent
+                v-for="event in day.events"
+                :key="event.title"
+                :event="event"
+                :day="day"
               >
-              <!-- <template v-slot:default></template> -->
-              <template v-slot="{ event: entry }"
-                ><i>{{ entry.title }}</i></template
-              >
-            </CalendarEvent>
+                <!-- <template v-slot:eventPriority="slotProps"> -->
+                <template #eventPriority="slotProps">
+                  <h5>{{ slotProps.priorityDisplayName }}</h5></template
+                >
+                <!-- <template v-slot:default></template> -->
+                <template v-slot="{ event: entry }"
+                  ><i>{{ entry.title }}</i></template
+                >
+              </CalendarEvent>
+            </TransitionGroup>
           </div>
           <div v-else>
             <div class="alert alert-light text-center">
@@ -88,4 +90,20 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.list-enter-to,
+.list-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s ease;
+}
+</style>
